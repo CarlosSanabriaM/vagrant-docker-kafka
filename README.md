@@ -1,9 +1,12 @@
 # Vagrant Docker Kafka
+
 __This project shows how to run Kafka, inside a Docker container, inside a VM, using Vagrant.__
 
-With this, __you don't need to install Docker__ in your local computer. __You just need to install Vagrant__.
+> With this, __you don't need to install Docker or Python__ on your local computer.  
+> __You just need to install Vagrant and VirtualBox__.
 
-Using Vagrant, this project automates the creation of an Ubuntu VM that installs Docker,
+## Architecture
+Vagrant creates an Ubuntu VM that installs Docker and Docker-Compose,
 pulls Docker images for Zookeeper and Kafka from DockerHub, and runs containers
 for Zookeeper and Kafka, with the corresponding port mappings.
 
@@ -106,7 +109,7 @@ Inside the Kafka container:
 | Describe topics                        | `/opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --describe`                                                                         |
 | Create topic                           | `/opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --replication-factor <replicas> --partitions <partitions> --topic <topic>` |
 | Delete topic                           | `/opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --delete --topic <topic>`                                                           |
-| Create Kafka Producer                  | `/opt/kafka/bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic <topic>`                                                               |
+| Create Kafka Producer                  | `/opt/kafka/bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic <topic>`                                                          |
 | Create Kafka Consumer (from latest)    | `/opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <topic>`                                                          |
 | Create Kafka Consumer (from beginning) | `/opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <topic> --from-beginning`                                         |
 
