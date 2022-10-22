@@ -4,12 +4,23 @@
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
 
+### Configuration parameters ###
+# Virtual machine name
+VM_NAME = "vagrant-docker-kafka"
+# Virtual machine memory (MB)
+#  Set 2GB of RAM for the VM.
+#  Kafka needs 1GB of RAM and Zookeper 100MB.
+VM_MEMORY_MB = "2048"
+################################
+
 Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box.
-  config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "hashicorp/bionic64"
   # This is the name vagrant outputs on the console and logs.
-  config.vm.define "vm_docker_kafka"
+  config.vm.define VM_NAME
+  # This is the hostname inside the VM.
+  config.vm.hostname = VM_NAME
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine.
@@ -24,10 +35,9 @@ Vagrant.configure("2") do |config|
   # backing providers for Vagrant. These expose provider-specific options.
   config.vm.provider "virtualbox" do |vb|
     # This is the name VirtualBox uses for the VM.
-    vb.name = "vm_docker_kafka"
+    vb.name = VM_NAME
     # Set 2GB of RAM for the VM.
-    # Kafka needs 1GB of RAM and Zookeper 100MB.
-    vb.memory = "2048"
+    vb.memory = VM_MEMORY_MB
   end
 
   # Enable provisioning with Docker and Docker Compose.
