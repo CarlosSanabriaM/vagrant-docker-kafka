@@ -25,7 +25,7 @@ The following diagram shows the architecture:
   ```bash
   vagrant plugin install vagrant-docker-compose
   ```
-  
+
 ### Verify installation
 
 Check that the `vagrant` executable was added correctly to the `PATH` variable:
@@ -39,6 +39,12 @@ mkdir test-vagrant
 cd test-vagrant
 vagrant init hashicorp/bionic64
 vagrant up
+vagrant ssh
+pwd
+exit
+vagrant destroy --force
+cd ..
+rm -rf test-vagrant
 ```
 
 > ⚠️ If the following error appears after executing `vagrant up`:  
@@ -48,6 +54,11 @@ vagrant up
 >    ```
 >    vagrant up --provider=virtualbox
 >    ```
+
+> ⚠️ If the following error appears after executing `vagrant up`:  
+> __`VBoxManage: error: Details: code NS_ERROR_FAILURE (0x80004005)`__  
+> * Reinstall VirtualBox
+
 Check that the `vagrant-docker-compose` plugin was installed correctly:
 ```bash
 vagrant plugin list | grep "vagrant-docker-compose"
