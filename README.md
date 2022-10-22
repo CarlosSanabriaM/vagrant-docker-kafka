@@ -37,7 +37,7 @@ Check that vagrant is able to create a VM:
 ```bash
 mkdir test-vagrant
 cd test-vagrant
-vagrant init
+vagrant init hashicorp/bionic64
 vagrant up
 ```
 
