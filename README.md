@@ -6,6 +6,7 @@ __This project shows how to run Kafka, inside a Docker container, inside a VM, u
 > __You just need to install Vagrant and VirtualBox__.
 
 ## Architecture
+
 Vagrant creates an Ubuntu VM that installs Docker and Docker-Compose,
 pulls Docker images for Zookeeper and Kafka from DockerHub, and runs containers
 for Zookeeper and Kafka, with the corresponding port mappings.
@@ -17,14 +18,43 @@ The following diagram shows the architecture:
 ![Architecture diagram](docs/diagrams/architecture-diagram.png)
 
 ## Prerequisites
+
 * [Install VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 * [Install Vagrant](https://www.vagrantup.com/docs/installation)
 * Install the docker-compose Vagrant plugin:
   ```bash
   vagrant plugin install vagrant-docker-compose
   ```
+  
+### Verify installation
+
+Check that the `vagrant` executable was added correctly to the `PATH` variable:
+```bash
+vagrant version
+```
+
+Check that vagrant is able to create a VM:
+```bash
+mkdir test-vagrant
+cd test-vagrant
+vagrant init
+vagrant up
+```
+
+> ⚠️ If the following error appears after executing `vagrant up`:  
+> __`No usable default provider could be found for your system.`__
+> 1. Verify that VirtualBox was installed correctly
+> 2. Obtain more info about the error:
+>    ```
+>    vagrant up --provider=virtualbox
+>    ```
+Check that the `vagrant-docker-compose` plugin was installed correctly:
+```bash
+vagrant plugin list | grep "vagrant-docker-compose"
+```
 
 ## Kafka topics
+
 This example will create 2 kafka topics:
 * topic1: 1 partition, 1 replica
 * topic2: 1 partition, 1 replica
@@ -47,6 +77,7 @@ that contains the Vagrantfile (in this case, the project root folder).
 > press the Enter key. Sometimes it gets stucked.
 
 ### Start the VM
+
 This will install Docker inside that VM, pull the Kafka and Zookeeper Docker images from DockerHub,
 and run a container for each of those images, with the corresponding port mappings.
 
@@ -61,11 +92,13 @@ vagrant up
 > ```
 
 ### Check the status of the VM
+
 ```bash
 vagrant status
 ```
 
 ### (Optionally) Connect to the VM
+
 This connection is done via ssh.
 
 ```bash
@@ -88,6 +121,7 @@ vagrant ssh
 > | `netstat -tulpn \| grep LISTEN`           | Display network connections (listening TCP or UDP). <br /> Useful to check that Kafka (9092) and Zookeeper (2181) ports are listening. |
 
 ### (Optionally) Connect to one of the Docker containers
+
 First, you must connect to the VM (steps above).
 
 Obtain the id of the container you want to connect to:
@@ -131,6 +165,7 @@ openssl s_client -connect zookeeper:2181
 ```
 
 ### Stop the VM (keeps Kafka data)
+
 Stopping the VM will stop the Docker containers and turn off the VM.  
 All the Kafka data (topics, events, etc) is persisted inside the containers,
 and a subsequent turn on of the VM (and the containers) will have access to that data.
@@ -152,6 +187,7 @@ vagrant up
 ```
 
 ### Destroy the VM (removes Kafka data)
+
 Destroying the VM will remove all the VM data, and therefore, the containers inside it.  
 For that reason, the Kafka data is also removed.  
 This should be the option used if you do not want to keep the Kafka data,
@@ -163,6 +199,7 @@ vagrant destroy
 ```
 
 ## Additional notes
+
 By default, the Vagrantfile uses the `docker-compose-single-broker.yml` Docker compose file
 to pull the Kafka and Zookeeper images and run the containers.  
 This file only defines the execution of 1 Kafka broker, and therefore, 1 Docker container for Kafka.
@@ -177,6 +214,7 @@ If you need another version of Docker compose, you need to specify the `compose_
 in the Vagrantfile (defaults to `1.24.1`), in the `config.vm.provision :docker_compose` line.
 
 ## References
+
 * [Vagrant](https://www.vagrantup.com/)
 * [Docker](https://www.docker.com/)
 * [Kafka](https://kafka.apache.org/)
