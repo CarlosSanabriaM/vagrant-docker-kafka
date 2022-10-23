@@ -45,4 +45,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision :docker_compose, yml: "/vagrant/docker-compose-single-broker.yml", run: "always"
   # https://github.com/leighmcculloch/vagrant-docker-compose#usage
 
+  # Automatically chdir to /vagrant directory upon `vagrant ssh`
+  config.ssh.extra_args = ["-t", "cd /vagrant; bash --login"] # warn: this breaks the ability to use the `vagrant ssh -- <command>` option
+  
 end
