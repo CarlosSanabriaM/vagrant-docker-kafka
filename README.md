@@ -93,7 +93,7 @@ that contains the Vagrantfile (in this case, the project root folder).
 > press the Enter key or right click in the console window.  
 > See [this post](https://superuser.com/questions/1442941/windows-10-console-stops-running-if-i-click-in-the-console-window) for more info about this problem.
 
-### Start the VM
+### Start the VM [host]
 
 This will install Docker inside that VM, pull the Kafka and Zookeeper Docker images from DockerHub,
 and run a container for each of those images, with the corresponding port mappings.
@@ -108,13 +108,13 @@ vagrant up
 > Creating vagrant_kafka_1     ... done
 > ```
 
-### Check the status of the VM
+### Check the status of the VM [host]
 
 ```bash
 vagrant status
 ```
 
-### (Optionally) Connect to the VM
+### (Optionally) Connect to the VM [host]
 
 This connection is done via ssh.
 
@@ -137,7 +137,7 @@ vagrant ssh
 > | `docker info`                             | Display system-wide information                                                                                                        |
 > | `netstat -tulpn \| grep LISTEN`           | Display network connections (listening TCP or UDP). <br /> Useful to check that Kafka (9092) and Zookeeper (2181) ports are listening. |
 
-### (Optionally) Connect to one of the Docker containers
+### (Optionally) Connect to one of the Docker containers [vm]
 
 First, you must connect to the VM (steps above).
 
@@ -181,7 +181,7 @@ apk add openssl
 openssl s_client -connect zookeeper:2181
 ```
 
-### Stop the VM (keeps Kafka data)
+### Stop the VM (keeps Kafka data) [host]
 
 Stopping the VM will stop the Docker containers and turn off the VM.  
 All the Kafka data (topics, events, etc) is persisted inside the containers,
@@ -203,7 +203,7 @@ Start the VM and the containers again:
 vagrant up
 ```
 
-### Destroy the VM (removes Kafka data)
+### Destroy the VM (removes Kafka data) [host]
 
 Destroying the VM will remove all the VM data, and therefore, the containers inside it.  
 For that reason, the Kafka data is also removed.  
