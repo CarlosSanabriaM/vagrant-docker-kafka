@@ -49,6 +49,7 @@ rm -rf test-vagrant
 
 > ⚠️ If the following error appears after executing `vagrant up`:  
 > __`No usable default provider could be found for your system.`__
+>
 > 1. Verify that VirtualBox was installed correctly
 > 2. Obtain more info about the error:
 >    ```
@@ -56,7 +57,8 @@ rm -rf test-vagrant
 >    ```
 
 > ⚠️ If the following error appears after executing `vagrant up`:  
-> __`VBoxManage: error: Details: code NS_ERROR_FAILURE (0x80004005)`__  
+> __`VBoxManage: error: Details: code NS_ERROR_FAILURE (0x80004005)`__
+>
 > * Reinstall VirtualBox
 
 Check that the `vagrant-docker-compose` plugin was installed correctly:
@@ -81,11 +83,15 @@ These are the topics created at the creation of the Kafka cluster,
 but you can create more topics after that manually (the way to create them is explained below).
 
 ## Steps to execute
+
 All the `vagrant` commands must be executed in the host machine from the folder
 that contains the Vagrantfile (in this case, the project root folder).
 
-> Note: If Vagrant doesn't show any output in the stdout for a Vagrant command after some time,
-> press the Enter key. Sometimes it gets stucked.
+> __ℹ️ Note for Windows users:__
+>
+> If Vagrant doesn't show any output in the stdout for a Vagrant command after some time,
+> press the Enter key or right click in the console window.  
+> See [this post](https://superuser.com/questions/1442941/windows-10-console-stops-running-if-i-click-in-the-console-window) for more info about this problem.
 
 ### Start the VM
 
@@ -116,7 +122,7 @@ This connection is done via ssh.
 vagrant ssh
 ```
 
-> Some interesting commands to execute inside the VM:
+> __ℹ️ Some interesting commands to execute inside the VM:__
 >
 > | Commmand                                  | Description                                                                                                                            |
 > | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
