@@ -30,6 +30,8 @@ Vagrant.configure("2") do |config|
   # This is specified in the docker compose configuration file.
   # With this double port mapping, we are able to access Kafka from the host.
   config.vm.network "forwarded_port", guest: 9092, host: 9092
+  # Map port 8080 of the VM to port 8080 of the host (this is the port used by Kafka UI).
+  config.vm.network "forwarded_port", guest: 8080, host: 8080
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
