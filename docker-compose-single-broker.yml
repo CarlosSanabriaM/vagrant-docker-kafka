@@ -29,3 +29,15 @@ services:
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+
+  kafka-ui:
+    # https://github.com/provectus/kafka-ui/blob/master/docker-compose.md
+    image: provectuslabs/kafka-ui
+    #container_name: kafka-ui
+    ports:
+      - "8080:8080"
+    restart: always
+    environment:
+      - KAFKA_CLUSTERS_0_NAME=local
+      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:29092
+      - KAFKA_CLUSTERS_0_ZOOKEEPER=zookeeper:2181
