@@ -61,6 +61,10 @@ rm -rf test-vagrant
 >
 > * Reinstall VirtualBox
 
+> ⚠️ For __other issues__:
+>
+> * Visit the [VirtualBox Common Issues](https://developer.hashicorp.com/vagrant/docs/providers/virtualbox/common-issues) section of the Vagrant documentation
+
 Check that the `vagrant-docker-compose` plugin was installed correctly:
 ```bash
 vagrant plugin list | grep "vagrant-docker-compose"
