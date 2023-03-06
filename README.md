@@ -76,7 +76,7 @@ This example will create 2 kafka topics:
 * topic1: 1 partition, 1 replica
 * topic2: 1 partition, 1 replica
 
-This is specified in the `docker-compose-single-broker.yml` file, in the following line:
+This is specified in the `docker-compose.yml` file, in the following line:
 ```yaml
 KAFKA_CREATE_TOPICS: "topic1:1:1,topic2:1:1"
 ```
@@ -221,13 +221,12 @@ vagrant destroy
 
 ## Additional notes
 
-By default, the Vagrantfile uses the `docker-compose-single-broker.yml` Docker compose file
-to pull the Kafka and Zookeeper images and run the containers.  
+By default, the Vagrantfile uses the `docker-compose.yml` Docker compose file to pull the Kafka and Zookeeper images and
+run the containers.  
 This file only defines the execution of 1 Kafka broker, and therefore, 1 Docker container for Kafka.
 
-This project also includes a `docker-compose.yml` file, which should allow to create Kafka clusters
-of more than 1 broker, but this hasn't been tested yet, and that Docker compose file should probably
-be tunned.
+This project also includes a `docker-compose.yml` file, which should allow to create Kafka clusters of more than 1
+broker, but this hasn't been tested yet, and that Docker compose file should probably be tunned.
 
 Whenever you change the Docker compose file, you need to run `vagrant reload` to redefine the Vagrant box.
 

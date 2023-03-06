@@ -17,6 +17,8 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box.
   config.vm.box = "hashicorp/bionic64"
+  # Alternative:
+  # config.vm.box = "ubuntu/jammy64"
   # This is the name vagrant outputs on the console and logs.
   config.vm.define VM_NAME
   # This is the hostname inside the VM.
@@ -30,6 +32,8 @@ Vagrant.configure("2") do |config|
   # This is specified in the docker compose configuration file.
   # With this double port mapping, we are able to access Kafka from the host.
   config.vm.network "forwarded_port", guest: 9092, host: 9092
+  # Map port 8080 of the VM to port 8080 of the host (this is the port used by Kafka UI).
+  config.vm.network "forwarded_port", guest: 8080, host: 8080
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -42,7 +46,7 @@ Vagrant.configure("2") do |config|
 
   # Enable provisioning with Docker and Docker Compose.
   config.vm.provision :docker
-  config.vm.provision :docker_compose, yml: "/vagrant/docker-compose-single-broker.yml", run: "always"
+  config.vm.provision :docker_compose, yml: "/vagrant/docker-compose.yml", run: "always"
   # https://github.com/leighmcculloch/vagrant-docker-compose#usage
 
   # Automatically chdir to /vagrant directory upon `vagrant ssh`
