@@ -75,7 +75,7 @@ rm -rf test-vagrant
 >
 > 1. Verify that VirtualBox was installed correctly
 > 2. Obtain more info about the error:
-     >    ```
+>    ```
 >    vagrant up --provider=virtualbox
 >    ```
 
@@ -88,10 +88,10 @@ rm -rf test-vagrant
 > __`SSH auth method: private key`__
 >
 > * Windows users: Open cmd as admin and execute:
-    >    ```
+>    ```
 >    bcdedit /set hypervisorlaunchtype off
 >    ```
-    >   This disables [Hyper-V](https://es.wikipedia.org/wiki/Hyper-V).
+>   This disables [Hyper-V](https://es.wikipedia.org/wiki/Hyper-V).
 
 > ⚠️ For __other issues__:
 >
