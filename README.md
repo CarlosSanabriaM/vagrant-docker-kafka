@@ -44,8 +44,7 @@ The following diagram shows the architecture:
 
 ### Verify installation
 
-> __ℹ️ Note:__
->
+> [!NOTE]  
 > Execute these steps only if it's the first time that you use Vagrant with VirtualBox.  
 > If not, you can skip them. They only serve to test the Vagrant + VirtualBox installation.  
 > If Vagrant and VirtualBox are installed and configured correctly,
@@ -70,7 +69,8 @@ cd ..
 rm -rf test-vagrant
 ```
 
-> ⚠️ If the following error appears after executing `vagrant up`:  
+> [!WARNING]  
+> If the following error appears after executing `vagrant up`:  
 > __`No usable default provider could be found for your system.`__
 >
 > 1. Verify that VirtualBox was installed correctly
@@ -79,12 +79,14 @@ rm -rf test-vagrant
 >    vagrant up --provider=virtualbox
 >    ```
 
-> ⚠️ If the following error appears after executing `vagrant up`:  
+> [!WARNING]  
+> If the following error appears after executing `vagrant up`:  
 > __`VBoxManage: error: Details: code NS_ERROR_FAILURE (0x80004005)`__
 >
 > * Reinstall VirtualBox
 
-> ⚠️ If Vagrant gets stuck on the following line after executing `vagrant up`:  
+> [!WARNING]  
+> If Vagrant gets stuck on the following line after executing `vagrant up`:  
 > __`SSH auth method: private key`__
 >
 > * Windows users: Open cmd as admin and execute:
@@ -93,7 +95,8 @@ rm -rf test-vagrant
 >    ```
 >   This disables [Hyper-V](https://es.wikipedia.org/wiki/Hyper-V).
 
-> ⚠️ For __other issues__:
+> [!WARNING]  
+> For __other issues__:
 >
 > * Visit the [VirtualBox Common Issues](https://developer.hashicorp.com/vagrant/docs/providers/virtualbox/common-issues) section of the Vagrant documentation
 
@@ -118,10 +121,10 @@ but you can create more topics after that manually (the way to create them is ex
 All the `vagrant` commands must be executed in the host machine from the folder
 that contains the Vagrantfile (in this case, the project root folder).
 
-> __ℹ️ Note for Windows users:__
->
+> [!NOTE]  
+> __For Windows users:__  
 > If Vagrant doesn't show any output in the stdout for a Vagrant command after some time,
-> press the Enter key or right click in the console window.  
+> press the Enter key or right click in the console window.
 > See [this post](https://superuser.com/questions/1442941/windows-10-console-stops-running-if-i-click-in-the-console-window) for more info about this problem.
 
 ### 1. Start the VM [host]
@@ -132,8 +135,7 @@ This will:
 3. Run the containers
 All with the corresponding port mappings.
 
-> __ℹ️ Note:__
->
+> [!NOTE]  
 > Docker images/containers will only be downloaded/executed if the
 > `Docker Compose up` line in the `Vagrantfile` is uncommented.
 
@@ -161,7 +163,8 @@ This connection is done via SSH.
 vagrant ssh
 ```
 
-> __ℹ️ Some interesting commands to execute inside the VM:__
+> [!TIP]  
+> __Some interesting commands to execute inside the VM:__
 >
 > | Commmand                                  | Description                                                                                                                            |
 > | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
@@ -249,8 +252,7 @@ tmux attach-session -t <session-name>
 
 ### (Optional) Remove and start containers to clean data [vm]
 
-> __ℹ️ Note:__
->
+> [!NOTE]  
 > Only if containers where executed using Docker Compose.
 
 This is useful if you want to clean the data inside the containers.
