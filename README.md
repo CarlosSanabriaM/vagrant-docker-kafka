@@ -133,6 +133,7 @@ This will:
 1. Install Docker inside the VM
 2. Pull the Docker images from DockerHub
 3. Run the containers
+
 All with the corresponding port mappings.
 
 > [!NOTE]  
